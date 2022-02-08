@@ -40,6 +40,9 @@ class JS(EmbeddedMedia):
         html = '<script type="text/javascript" {0}>{{0}}</script>'.format(attrs)
         return format_html(html, mark_safe(self.content))
 
+    def __hash__(self):
+        return hash(self.content)
+
 
 def render_css(self):
     # To keep rendering order consistent, we can't just iterate over items().
